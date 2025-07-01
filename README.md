@@ -83,12 +83,12 @@ Durante la validazione sono state misurate diverse metriche standard nel campo d
 Queste metriche offrono una visione approfondita della capacità del modello di distinguere correttamente tra i diversi stati comportamentali dell’utente, e di farlo in modo bilanciato anche in presenza di dati non uniformemente distribuiti.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/994181b9-1e99-440b-8f7a-8803be3fc1bc" alt="Screenshot modello" width="600"/>
+  <img src="https://github.com/user-attachments/assets/994181b9-1e99-440b-8f7a-8803be3fc1bc" alt="Metriche di valutazione" width="48%" style="margin-right:10px;"/>
+  <img src="https://github.com/user-attachments/assets/e71609cb-f42a-4eda-aed3-ec69bedc1404" alt="Matrice di confusione" width="48%"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e71609cb-f42a-4eda-aed3-ec69bedc1404" alt="Confusion Matrix" width="400"/>
+  Le metriche a sinistra evidenziano le ottime prestazioni del modello su tutte le classi.  
+  La matrice a destra mostra che gli errori di classificazione avvengono quasi esclusivamente tra classi adiacenti.
 </p>
 
-La prima immagine mostra le metriche di valutazione del modello (precision, recall, F1-score) per ciascuna classe.  
-La seconda immagine rappresenta la matrice di confusione, con le principali sovrapposizioni tra classi adiacenti.
