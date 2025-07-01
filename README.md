@@ -87,8 +87,35 @@ Queste metriche offrono una visione approfondita della capacità del modello di 
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e71609cb-f42a-4eda-aed3-ec69bedc1404" alt="Confusion Matrix" width="600"/>
+  <img src="https://github.com/user-attachments/assets/e71609cb-f42a-4eda-aed3-ec69bedc1404" alt="Confusion Matrix" width="400"/>
 </p>
+
+La seguente analisi si riferisce ai risultati riportati nelle due immagini sottostanti.
+
+La prima immagine (Tabella 6.1) riassume le principali metriche di valutazione del modello di classificazione applicato ai tre livelli di comportamento sociale:
+1 = cattivo, 2 = normale, 3 = buono.
+
+Le metriche di precision, recall e F1-score risultano complessivamente elevate e ben bilanciate, con valori compresi tra 0.82 e 0.88.
+La classe 2 (comportamento normale), che rappresenta la fascia più ampia della popolazione analizzata (supporto: 11.272), mostra le performance migliori, con un F1-score pari a 0.88.
+Anche la classe 1 (comportamento cattivo) presenta ottimi risultati, con precision 0.86 e recall 0.84.
+La classe 3 (comportamento buono) mantiene valori competitivi, con un recall di 0.86 e un F1-score di 0.82, risultato molto positivo considerando la minore rappresentatività della classe (supporto: 3.536).
+
+L'accuracy globale del modello raggiunge 0.86, confermando l’efficacia complessiva del sistema. Le medie macro (0.85) e pesata (0.86) rafforzano ulteriormente l’idea di un modello solido, capace di mantenere prestazioni elevate anche in presenza di una distribuzione non uniforme tra le classi.
+
+La seconda immagine (Tabella 6.2 – matrice di confusione) evidenzia che la maggior parte delle predizioni è correttamente concentrata lungo la diagonale principale, a conferma dell’affidabilità complessiva del classificatore.
+Le uniche sovrapposizioni significative si osservano tra classi adiacenti:
+
+824 esempi della classe 1 sono predetti come classe 2
+
+687 della classe 2 come classe 1
+
+554 della classe 2 come classe 3
+
+699 della classe 3 come classe 2
+
+Si tratta comunque di fenomeni fisiologici nel contesto dell’analisi comportamentale, dove le differenze tra categorie vicine sono spesso sottili e ambigue anche dal punto di vista umano.
+
+Nel complesso, il modello si conferma altamente performante e bilanciato, con una buona capacità di generalizzazione. Le ambiguità riscontrate nelle zone di transizione tra classi non compromettono l’affidabilità del sistema, che si dimostra efficace per la classificazione del comportamento sociale anche su dati complessi e non perfettamente separabili.
 
 
 
