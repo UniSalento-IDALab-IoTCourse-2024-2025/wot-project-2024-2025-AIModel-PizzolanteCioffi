@@ -62,15 +62,15 @@ Il microservizio riceve tramite API una richiesta HTTP POST contenente un oggett
 - i dati biometrici raccolti per ogni ora.
 
 Tali informazioni vengono preprocessate e combinate per costruire un record giornaliero aggregato. In particolare:
--l’indirizzo viene geocodificato per ottenere le coordinate geografiche;
--le posizioni vengono analizzate con un algoritmo unsupervised (DBSCAN combinato con la distanza da casa) per stabilire le ore passate fuori casa;
--le informazioni biometriche vengono fuse con le predizioni comportamentali orarie per costruire un dataset finale;
--il dataset viene infine aggregato in un singolo record rappresentativo della giornata.
+- l’indirizzo viene geocodificato per ottenere le coordinate geografiche;
+- le posizioni vengono analizzate con un algoritmo unsupervised (DBSCAN combinato con la distanza da casa) per stabilire le ore passate fuori casa;
+- le informazioni biometriche vengono fuse con le predizioni comportamentali orarie per costruire un dataset finale;
+- il dataset viene infine aggregato in un singolo record rappresentativo della giornata.
 
 A partire da questo record, il microservizio applica un supervised model di machine learning (RandomForestClassifier) precedentemente addestrato in locale su un dataset generato tramite uno script Python (sempre in locale). Tale approccio si è reso necessario in quanto non sono disponibili dataset pubblici contenenti simultaneamente le caratteristiche richieste dal sistema, ovvero frequenza cardiaca, durata delle chiamate, durata del sonno e tempo trascorso fuori casa. Il modello, una volta addestrato, è stato serializzato (cioè è stato salvato lo stato del modello addestrato su disco in formato binario) e viene ora utilizzato per restituire in tempo reale una predizione del comportamento dell’utente (buono, normale o cattivo) sulla base dei dati giornalieri aggregati.
 La risposta restituita contiene:
--l’identificativo del paziente;
--il livello di comportamento stimato (etichetta intera che può valere 1,2 o 3: behaviour).
+- l’identificativo del paziente;
+- il livello di comportamento stimato (etichetta intera che può valere 1,2 o 3: behaviour).
 
 In caso di valori critici (es. comportamento cattivo), il risultato viene poi utilizzato da altri microservizi (es. DataPrediction, Notification) per aggiornare lo stato dell’utente o generare notifiche di allerta.
 Il microservizio è sviluppato in Python utilizzando il framework FastAPI, ed espone un singolo endpoint HTTP POST protetto tramite autenticazione JWT. La logica del modello e della trasformazione dei dati è suddivisa in servizi modulari riutilizzabili (es. geocoding, build_final_dataset, inference, process_positions). Questo approccio modulare e asincrono consente di garantire alta manutenibilità, integrazione semplice e inferenza in tempo reale.
@@ -88,8 +88,8 @@ Queste metriche offrono una visione approfondita della capacità del modello di 
 </p>
 
 <p align="center">
-  A sinistra sono riportate le metriche di precisione, richiamo e F1-score per ciascuna classe.  
-  A destra la matrice di confusione mostra che gli errori di classificazione avvengono quasi esclusivamente tra classi adiacenti.
+  A sinistra sono riportate le metriche di precision, recall e F1-score per ciascuna classe.  
+  A destra la matrice di confusione.
 </p>
 
 
